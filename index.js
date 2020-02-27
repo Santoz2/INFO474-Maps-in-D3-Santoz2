@@ -64,6 +64,18 @@ d3.json('./nygeo.json').then(function(data) {
                 })
                 .attr('r', 5)
                 .attr('fill', '#4682b4')
+                .on( "click", function(){
+                    d3.select(this)
+                      .attr("opacity",1)
+                      .transition()
+                      .duration( 1000 )
+                      .attr( "cx", m.width * Math.round( Math.random() ) )
+                      .attr( "cy", m.height * Math.round( Math.random() ) )
+                      .attr( "opacity", 0 )
+                      .on("end",function(){
+                        d3.select(this).remove();
+                      })
+                  })
 
         
     })
